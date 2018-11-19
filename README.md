@@ -15,7 +15,7 @@ Also known as a [preparatory refactoring](http://martinfowler.com/articles/workf
 
 ## Where to Start
 
-Begin refactoring the existing `lib/gilded_rose.rb` class.
+Choose a language and look at the README inside.
 
 ## Original Requirements
 
