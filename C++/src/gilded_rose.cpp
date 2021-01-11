@@ -20,6 +20,10 @@ GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
 void GildedRose::tick()
 {
     if (_name == kItemNormal) {
+        if (_days_remaining == 0) {
+            _quality -= 1;
+        }
+
         _days_remaining -= 1;
         _quality -= 1;
         return;
