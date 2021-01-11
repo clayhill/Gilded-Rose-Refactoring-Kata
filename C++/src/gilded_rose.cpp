@@ -53,6 +53,9 @@ void GildedRose::tick()
     }
 
     if (_name == kItemBackstagePasses) {
+        _days_remaining -= 1;
+        _quality += 1;
+
         return;
     }
 
