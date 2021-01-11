@@ -33,6 +33,9 @@ void GildedRose::tick()
     }
 
     if (_name == kItemAgedBrie) {
+        _days_remaining -= 1;
+        _quality += 1;
+
         return;
     }
 
