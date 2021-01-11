@@ -73,53 +73,6 @@ void GildedRose::tick()
 
         return;
     }
-
-    if (_name != kItemAgedBrie && _name != kItemBackstagePasses) {
-        if (_quality > 0) {
-            if (_name != kItemSulfuras) {
-                _quality = _quality - 1;
-            }
-        }
-    }
-    else {
-        if (_quality < 50) {
-            _quality = _quality + 1;
-            if (_name == kItemBackstagePasses) {
-                if (_days_remaining < 11) {
-                    if (_quality < 50) {
-                        _quality = _quality + 1;
-                    }
-                }
-                if (_days_remaining < 6) {
-                    if (_quality < 50) {
-                        _quality = _quality + 1;
-                    }
-                }
-            }
-        }
-    }
-    if (_name != kItemSulfuras) {
-        _days_remaining = _days_remaining - 1;
-    }
-    if (_days_remaining < 0) {
-        if (_name != kItemAgedBrie) {
-            if (_name != kItemBackstagePasses) {
-                if (_quality > 0) {
-                    if (_name != kItemSulfuras) {
-                        _quality = _quality - 1;
-                    }
-                }
-            }
-            else {
-                _quality = _quality - _quality;
-            }
-        }
-        else {
-            if (_quality < 50) {
-                _quality = _quality + 1;
-            }
-        }
-    }
 }
 
 int GildedRose::days_remaining()
