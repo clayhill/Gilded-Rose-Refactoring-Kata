@@ -3,6 +3,7 @@
 #include <string>
 
 #include "aged_brie_item.h"
+#include "backstage_passes_item.h"
 #include "normal_item.h"
 
 namespace
@@ -43,29 +44,12 @@ void GildedRose::tick()
     }
 
     if (_name == kItemBackstagePasses) {
-        handleItemBackstagePasses();
+        BackstagePassesItem item(_days_remaining, _quality);
+        item.tick();
+        _days_remaining = item.days_remaining();
+        _quality = item.quality();
         return;
     }
-}
-void GildedRose::handleItemBackstagePasses()
-{
-    if (_quality < 50) {
-        if (_days_remaining <= 10) {
-            if (_days_remaining <= 5) {
-                _quality += 1;
-            }
-
-            _quality += 1;
-        }
-
-        _quality += 1;
-    }
-
-    if (_days_remaining <= 0) {
-        _quality = 0;
-    }
-
-    _days_remaining -= 1;
 }
 
 int GildedRose::days_remaining()
