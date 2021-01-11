@@ -2,6 +2,14 @@
 
 #include <string>
 
+namespace
+{
+const char *const kItemNormal = "Normal Item";
+const char *const kItemAgedBrie = "Aged Brie";
+const char *const kItemBackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
+const char *const kItemSulfuras = "Sulfuras, Hand of Ragnaros";
+}  // namespace
+
 GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
     : _name(name)
     , _days_remaining(days_remaining)
@@ -11,9 +19,9 @@ GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
 
 void GildedRose::tick()
 {
-    if (_name != "Aged Brie" && _name != "Backstage passes to a TAFKAL80ETC concert") {
+    if (_name != kItemAgedBrie && _name != kItemBackstagePasses) {
         if (_quality > 0) {
-            if (_name != "Sulfuras, Hand of Ragnaros") {
+            if (_name != kItemSulfuras) {
                 _quality = _quality - 1;
             }
         }
@@ -21,7 +29,7 @@ void GildedRose::tick()
     else {
         if (_quality < 50) {
             _quality = _quality + 1;
-            if (_name == "Backstage passes to a TAFKAL80ETC concert") {
+            if (_name == kItemBackstagePasses) {
                 if (_days_remaining < 11) {
                     if (_quality < 50) {
                         _quality = _quality + 1;
@@ -35,14 +43,14 @@ void GildedRose::tick()
             }
         }
     }
-    if (_name != "Sulfuras, Hand of Ragnaros") {
+    if (_name != kItemSulfuras) {
         _days_remaining = _days_remaining - 1;
     }
     if (_days_remaining < 0) {
-        if (_name != "Aged Brie") {
-            if (_name != "Backstage passes to a TAFKAL80ETC concert") {
+        if (_name != kItemAgedBrie) {
+            if (_name != kItemBackstagePasses) {
                 if (_quality > 0) {
-                    if (_name != "Sulfuras, Hand of Ragnaros") {
+                    if (_name != kItemSulfuras) {
                         _quality = _quality - 1;
                     }
                 }
