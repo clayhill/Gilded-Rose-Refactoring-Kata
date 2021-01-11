@@ -19,6 +19,10 @@ GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
 
 void GildedRose::tick()
 {
+    if (_name == kItemNormal) {
+        return;
+    }
+
     if (_name != kItemAgedBrie && _name != kItemBackstagePasses) {
         if (_quality > 0) {
             if (_name != kItemSulfuras) {
