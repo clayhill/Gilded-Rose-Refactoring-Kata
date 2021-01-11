@@ -32,6 +32,10 @@ void GildedRose::tick()
         return;
     }
 
+    if (_name == kItemAgedBrie) {
+        return;
+    }
+
     if (_name != kItemAgedBrie && _name != kItemBackstagePasses) {
         if (_quality > 0) {
             if (_name != kItemSulfuras) {
