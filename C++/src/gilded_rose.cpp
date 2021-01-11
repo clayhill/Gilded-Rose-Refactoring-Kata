@@ -65,6 +65,10 @@ void GildedRose::tick()
             _quality += 1;
         }
 
+        if (_days_remaining == 0) {
+            _quality = 0;
+        }
+
         _days_remaining -= 1;
 
         return;
