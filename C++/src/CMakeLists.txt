@@ -4,6 +4,7 @@ project(GildedRose)
 add_library(GildedRose
   gilded_rose.cpp include/GildedRose/gilded_rose.h
   normal_item.cpp normal_item.h
+  aged_brie_item.cpp aged_brie_item.h
   )
 target_compile_features(GildedRose PUBLIC cxx_std_17)
 target_include_directories(GildedRose PUBLIC
