@@ -17,6 +17,7 @@ private:
     int _quality;
     void handleItemNormal();
     void handleItemAgedBrie();
+    void handleItemBackstagePasses();
 };
 
 #endif  //GILDEDROSE_GILDED_ROSE_H
