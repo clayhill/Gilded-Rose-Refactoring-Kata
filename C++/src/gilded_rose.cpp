@@ -54,7 +54,7 @@ void GildedRose::tick()
 
     if (_name == kItemBackstagePasses) {
         if (_quality < 50) {
-            if (_days_remaining == 10) {
+            if (_days_remaining <= 10) {
                 _quality += 1;
             }
 
