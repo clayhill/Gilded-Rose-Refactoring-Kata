@@ -25,18 +25,7 @@ void GildedRose::tick()
     }
 
     if (_name == kItemAgedBrie) {
-        if (_quality < 50) {
-            if (_quality < 49) {
-                _quality += 1;
-            }
-
-            if (_days_remaining <= 0) {
-                _quality += 1;
-            }
-        }
-
-        _days_remaining -= 1;
-
+        handleItemAgedBrie();
         return;
     }
 
@@ -65,6 +54,20 @@ void GildedRose::tick()
 
         return;
     }
+}
+void GildedRose::handleItemAgedBrie()
+{
+    if (_quality < 50) {
+        if (_quality < 49) {
+            _quality += 1;
+        }
+
+        if (_days_remaining <= 0) {
+            _quality += 1;
+        }
+    }
+
+    _days_remaining -= 1;
 }
 void GildedRose::handleItemNormal()
 {

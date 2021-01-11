@@ -16,6 +16,7 @@ private:
     int _days_remaining;
     int _quality;
     void handleItemNormal();
+    void handleItemAgedBrie();
 };
 
 #endif  //GILDEDROSE_GILDED_ROSE_H
