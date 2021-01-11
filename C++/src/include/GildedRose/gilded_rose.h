@@ -12,9 +12,10 @@ public:
     int quality();
 
 private:
-  std::string _name;
-  int _days_remaining;
-  int _quality;
+    std::string _name;
+    int _days_remaining;
+    int _quality;
+    void handleItemNormal();
 };
 
-#endif //GILDEDROSE_GILDED_ROSE_H
+#endif  //GILDEDROSE_GILDED_ROSE_H
