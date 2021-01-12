@@ -36,25 +36,20 @@ std::unique_ptr<Item> createItem(const std::string &name, int days_remaining, in
 
 GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
     : _item(createItem(name, days_remaining, quality))
-    , _name(name)
-    , _days_remaining(days_remaining)
-    , _quality(quality)
 {
 }
 
 void GildedRose::tick()
 {
     _item->tick();
-    _days_remaining = _item->days_remaining();
-    _quality = _item->quality();
 }
 
 int GildedRose::days_remaining()
 {
-    return _days_remaining;
+    return _item->days_remaining();
 }
 
 int GildedRose::quality()
 {
-    return _quality;
+    return _item->quality();
 }

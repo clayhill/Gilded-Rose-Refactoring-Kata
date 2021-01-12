@@ -15,9 +15,6 @@ public:
     int quality();
 
 private:
-    std::string _name;
-    int _days_remaining;
-    int _quality;
     std::unique_ptr<Item> _item{};
 };
 
