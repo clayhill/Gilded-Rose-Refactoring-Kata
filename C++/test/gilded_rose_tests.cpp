@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "GildedRose/gilded_rose.h"
 
 using namespace ::testing;
@@ -258,7 +259,7 @@ protected:
     std::string name{"Conjured Mana Cake"};
 };
 
-TEST_F(GildedRoseConjuredMana, DISABLED_BeforeSellDate)
+TEST_F(GildedRoseConjuredMana, BeforeSellDate)
 {
     GildedRose gilded_rose{name, 5, 10};
     gilded_rose.tick();
