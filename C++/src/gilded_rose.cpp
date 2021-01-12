@@ -5,6 +5,7 @@
 
 #include "aged_brie_item.h"
 #include "backstage_passes_item.h"
+#include "conjured_mana_item.h"
 #include "normal_item.h"
 
 namespace
@@ -13,6 +14,7 @@ const char *const kItemNormal = "Normal Item";
 const char *const kItemAgedBrie = "Aged Brie";
 const char *const kItemBackstagePasses = "Backstage passes to a TAFKAL80ETC concert";
 const char *const kItemSulfuras = "Sulfuras, Hand of Ragnaros";
+const char *const kItemConjuredManaCake = "Conjured Mana Cake";
 
 std::unique_ptr<Item> createItem(const std::string &name, int days_remaining, int quality)
 {
@@ -29,6 +31,9 @@ std::unique_ptr<Item> createItem(const std::string &name, int days_remaining, in
     }
     else if (name == kItemBackstagePasses) {
         item = std::make_unique<BackstagePassesItem>(days_remaining, quality);
+    }
+    else if (name == kItemConjuredManaCake) {
+        item = std::make_unique<ConjuredManaItem>(days_remaining, quality);
     }
     return item;
 }
