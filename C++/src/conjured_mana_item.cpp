@@ -7,6 +7,9 @@ ConjuredManaItem::ConjuredManaItem(int days_remaining, int quality)
 
 void ConjuredManaItem::tick()
 {
+    if (_quality > 0) {
+        _quality -= 2;
+    }
+
     _days_remaining -= 1;
-    _quality -= 2;
 }
