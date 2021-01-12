@@ -18,7 +18,6 @@ private:
     std::string _name;
     int _days_remaining;
     int _quality;
-    std::unique_ptr<Item> createItem();
 };
 
 #endif  //GILDEDROSE_GILDED_ROSE_H
