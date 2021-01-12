@@ -35,7 +35,8 @@ std::unique_ptr<Item> createItem(const std::string &name, int days_remaining, in
 }  // namespace
 
 GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
-    : _name(name)
+    : _item(createItem(name, days_remaining, quality))
+    , _name(name)
     , _days_remaining(days_remaining)
     , _quality(quality)
 {
@@ -43,10 +44,9 @@ GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
 
 void GildedRose::tick()
 {
-    std::unique_ptr<Item> item{createItem(_name, _days_remaining, _quality)};
-    item->tick();
-    _days_remaining = item->days_remaining();
-    _quality = item->quality();
+    _item->tick();
+    _days_remaining = _item->days_remaining();
+    _quality = _item->quality();
 }
 
 int GildedRose::days_remaining()
