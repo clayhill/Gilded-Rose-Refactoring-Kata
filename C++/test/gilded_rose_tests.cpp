@@ -286,7 +286,7 @@ TEST_F(GildedRoseConjuredMana, OnSellDate)
     EXPECT_EQ(gilded_rose.quality(), 6);
 }
 
-TEST_F(GildedRoseConjuredMana, DISABLED_OnSellDateAtZeroQuality)
+TEST_F(GildedRoseConjuredMana, OnSellDateAtZeroQuality)
 {
     GildedRose gilded_rose{name, 0, 0};
     gilded_rose.tick();
