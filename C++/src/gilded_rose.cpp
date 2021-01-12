@@ -24,33 +24,24 @@ GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
 
 void GildedRose::tick()
 {
+    std::unique_ptr<Item> item{};
+
     if (_name == kItemNormal) {
-        std::unique_ptr<Item> item{std::make_unique<NormalItem>(_days_remaining, _quality)};
-        item->tick();
-        _days_remaining = item->days_remaining();
-        _quality = item->quality();
+        item = std::make_unique<NormalItem>(_days_remaining, _quality);
+    }
+    else if (_name == kItemAgedBrie) {
+        item = std::make_unique<AgedBrieItem>(_days_remaining, _quality);
+    }
+    else if (_name == kItemSulfuras) {
         return;
+    }
+    else if (_name == kItemBackstagePasses) {
+        item = std::make_unique<BackstagePassesItem>(_days_remaining, _quality);
     }
 
-    if (_name == kItemAgedBrie) {
-        std::unique_ptr<Item> item{std::make_unique<AgedBrieItem>(_days_remaining, _quality)};
-        item->tick();
-        _days_remaining = item->days_remaining();
-        _quality = item->quality();
-        return;
-    }
-
-    if (_name == kItemSulfuras) {
-        return;
-    }
-
-    if (_name == kItemBackstagePasses) {
-        std::unique_ptr<Item> item{std::make_unique<BackstagePassesItem>(_days_remaining, _quality)};
-        item->tick();
-        _days_remaining = item->days_remaining();
-        _quality = item->quality();
-        return;
-    }
+    item->tick();
+    _days_remaining = item->days_remaining();
+    _quality = item->quality();
 }
 
 int GildedRose::days_remaining()
