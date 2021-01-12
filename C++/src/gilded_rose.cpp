@@ -33,7 +33,7 @@ void GildedRose::tick()
         item = std::make_unique<AgedBrieItem>(_days_remaining, _quality);
     }
     else if (_name == kItemSulfuras) {
-        return;
+        item = std::make_unique<Item>(_days_remaining, _quality);
     }
     else if (_name == kItemBackstagePasses) {
         item = std::make_unique<BackstagePassesItem>(_days_remaining, _quality);
