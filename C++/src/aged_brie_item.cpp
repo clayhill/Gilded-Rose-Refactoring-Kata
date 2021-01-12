@@ -1,8 +1,7 @@
 #include "aged_brie_item.h"
 
 AgedBrieItem::AgedBrieItem(int days_remaining, int quality)
-    : _days_remaining(days_remaining)
-    , _quality(quality)
+    : Item(days_remaining, quality)
 {
 }
 
@@ -19,14 +18,4 @@ void AgedBrieItem::tick()
     }
 
     _days_remaining -= 1;
-}
-
-int AgedBrieItem::days_remaining() const
-{
-    return _days_remaining;
-}
-
-int AgedBrieItem::quality() const
-{
-    return _quality;
 }

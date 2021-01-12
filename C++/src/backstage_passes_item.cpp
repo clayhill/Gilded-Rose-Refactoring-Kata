@@ -1,8 +1,7 @@
 #include "backstage_passes_item.h"
 
 BackstagePassesItem::BackstagePassesItem(int days_remaining, int quality)
-    : _days_remaining(days_remaining)
-    , _quality(quality)
+    : Item(days_remaining, quality)
 {
 }
 
@@ -25,14 +24,4 @@ void BackstagePassesItem::tick()
     }
 
     _days_remaining -= 1;
-}
-
-int BackstagePassesItem::days_remaining() const
-{
-    return _days_remaining;
-}
-
-int BackstagePassesItem::quality() const
-{
-    return _quality;
 }
