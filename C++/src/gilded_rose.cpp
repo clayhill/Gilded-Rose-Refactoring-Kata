@@ -24,7 +24,14 @@ GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
 
 void GildedRose::tick()
 {
-    std::unique_ptr<Item> item{};
+    std::unique_ptr<Item> item{createItem()};
+    item->tick();
+    _days_remaining = item->days_remaining();
+    _quality = item->quality();
+}
+std::unique_ptr<Item> GildedRose::createItem()
+{
+    std::unique_ptr<Item> item;
 
     if (_name == kItemNormal) {
         item = std::make_unique<NormalItem>(_days_remaining, _quality);
@@ -38,10 +45,7 @@ void GildedRose::tick()
     else if (_name == kItemBackstagePasses) {
         item = std::make_unique<BackstagePassesItem>(_days_remaining, _quality);
     }
-
-    item->tick();
-    _days_remaining = item->days_remaining();
-    _quality = item->quality();
+    return item;
 }
 
 int GildedRose::days_remaining()
