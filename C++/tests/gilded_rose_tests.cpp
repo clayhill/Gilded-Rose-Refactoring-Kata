@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
-#include "GildedRose/gilded_rose.h"
+
+#include "../src/gilded_rose.h"
 
 using namespace ::testing;
 
