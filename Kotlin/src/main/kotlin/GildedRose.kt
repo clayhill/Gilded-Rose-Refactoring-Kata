@@ -6,12 +6,10 @@ sealed class GildedRose {
     abstract var daysRemaining: Int
     abstract fun updateQuality()
 
-    data class NormalItem(
+    sealed class NormalItem(
         override var daysRemaining: Int,
         override var quality: Int,
     ) : GildedRose() {
-        override val name: String = "Normal Item"
-
         override fun updateQuality() {
             if (quality > 0) {
                 quality -= 1
@@ -23,6 +21,18 @@ sealed class GildedRose {
                 }
             }
         }
+
+        data class Default(
+            override var daysRemaining: Int,
+            override var quality: Int,
+            override val name: String = "Normal Item"
+        ): NormalItem(daysRemaining, quality)
+
+        data class ConjuredManaCake(
+            override var daysRemaining: Int,
+            override var quality: Int,
+            override val name: String = "Conjured Mana Cake"
+        ): NormalItem(daysRemaining, quality)
     }
 
     data class AgedBrie(
@@ -78,25 +88,5 @@ sealed class GildedRose {
     ) : GildedRose() {
         override val name: String = "Sulfuras, Hand of Ragnaros"
         override fun updateQuality() = Unit
-    }
-
-    data class ConjuredManaCake(
-        override var daysRemaining: Int,
-        override var quality: Int,
-    ) : GildedRose() {
-        override val name: String = "Conjured Mana Cake"
-
-        override fun updateQuality() {
-            if (quality > 0) {
-                quality -= 1
-            }
-            daysRemaining -= 1
-
-            if (daysRemaining < 0) {
-                if (quality > 0) {
-                    quality -= 1
-                }
-            }
-        }
     }
 }

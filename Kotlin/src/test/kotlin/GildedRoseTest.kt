@@ -7,28 +7,28 @@ import org.gildedrose.GildedRose
 class GildedRoseTest : DescribeSpec({
     describe("Normal Item") {
         it("before sell date") {
-            val gildedRose = GildedRose.NormalItem(5, 10)
+            val gildedRose = GildedRose.NormalItem.Default(5, 10)
             gildedRose.updateQuality()
             gildedRose.quality shouldBe 9
             gildedRose.daysRemaining shouldBe 4
         }
 
         it("on sell date") {
-            val gildedRose = GildedRose.NormalItem(0, 10)
+            val gildedRose = GildedRose.NormalItem.Default(0, 10)
             gildedRose.updateQuality()
             gildedRose.quality shouldBe 8
             gildedRose.daysRemaining shouldBe -1
         }
 
         it("after sell date") {
-            val gildedRose = GildedRose.NormalItem(-10, 10)
+            val gildedRose = GildedRose.NormalItem.Default(-10, 10)
             gildedRose.updateQuality()
             gildedRose.quality shouldBe 8
             gildedRose.daysRemaining shouldBe -11
         }
 
         it("of zero quality") {
-            val gildedRose = GildedRose.NormalItem(5, 0)
+            val gildedRose = GildedRose.NormalItem.Default(5, 0)
             gildedRose.updateQuality()
             gildedRose.quality shouldBe 0
             gildedRose.daysRemaining shouldBe 4
@@ -197,42 +197,42 @@ class GildedRoseTest : DescribeSpec({
 
     describe("Conjured Mana Cake").config(enabled = false) {
         it("before sell date") {
-            val gildedRose = GildedRose.ConjuredManaCake(5, 10)
+            val gildedRose = GildedRose.NormalItem.ConjuredManaCake(5, 10)
             gildedRose.updateQuality()
             gildedRose.quality shouldBe 8
             gildedRose.daysRemaining shouldBe 4
         }
 
         it("before sell date at zero quality") {
-            val gildedRose = GildedRose.ConjuredManaCake(5, 0)
+            val gildedRose = GildedRose.NormalItem.ConjuredManaCake(5, 0)
             gildedRose.updateQuality()
             gildedRose.quality shouldBe 0
             gildedRose.daysRemaining shouldBe 4
         }
 
         it("on sell date") {
-            val gildedRose = GildedRose.ConjuredManaCake(0, 10)
+            val gildedRose = GildedRose.NormalItem.ConjuredManaCake(0, 10)
             gildedRose.updateQuality()
             gildedRose.quality shouldBe 6
             gildedRose.daysRemaining shouldBe -1
         }
 
         it("on sell date at zero quality") {
-            val gildedRose = GildedRose.ConjuredManaCake(0, 0)
+            val gildedRose = GildedRose.NormalItem.ConjuredManaCake(0, 0)
             gildedRose.updateQuality()
             gildedRose.quality shouldBe 0
             gildedRose.daysRemaining shouldBe -1
         }
 
         it("after sell date") {
-            val gildedRose = GildedRose.ConjuredManaCake(-10, 10)
+            val gildedRose = GildedRose.NormalItem.ConjuredManaCake(-10, 10)
             gildedRose.updateQuality()
             gildedRose.quality shouldBe 6
             gildedRose.daysRemaining shouldBe -11
         }
 
         it("after sell date at zero quality") {
-            val gildedRose = GildedRose.ConjuredManaCake(-10, 0)
+            val gildedRose = GildedRose.NormalItem.ConjuredManaCake(-10, 0)
             gildedRose.updateQuality()
             gildedRose.quality shouldBe 0
             gildedRose.daysRemaining shouldBe -11
