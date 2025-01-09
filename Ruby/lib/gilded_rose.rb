@@ -62,7 +62,7 @@ class GildedRose
       @quality -= 1
     end
 
-    if @days_remaining == 0
+    if @days_remaining <= 0
       @quality -= 2
     end
 
