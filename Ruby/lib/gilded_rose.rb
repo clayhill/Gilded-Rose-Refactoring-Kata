@@ -1,4 +1,4 @@
-class GildedRose
+module GildedRose
   class NormalItem
     attr_reader :days_remaining, :quality
 
@@ -65,27 +65,13 @@ class GildedRose
     end
   end
 
-  attr_reader :days_remaining, :quality
-
-  def initialize(name:, days_remaining:, quality:)
-    @item = klass_for(name).new(days_remaining, quality)
-  end
-
-  def tick
-    @item.tick
-  end
-
-  def days_remaining
-    @item.days_remaining
-  end
-
-  def quality
-    @item.quality
+  def self.for(name:, days_remaining:, quality:)
+    klass_for(name).new(days_remaining, quality)
   end
 
   private
 
-  def klass_for(name)
+  def self.klass_for(name)
     case name
     when "Normal Item"
       NormalItem
