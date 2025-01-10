@@ -6,6 +6,10 @@ module GildedRose
       @days_remaining = days_remaining
       @quality = quality
     end
+
+    def tick
+      # Do nothing
+    end
   end
 
   class NormalItem < Item
@@ -25,12 +29,6 @@ module GildedRose
 
       @quality += 1
       @quality += 1 if @days_remaining <= 0 && @quality < 49
-    end
-  end
-
-  class Sulfuras < Item
-    def tick
-
     end
   end
 
@@ -59,7 +57,7 @@ module GildedRose
     when "Aged Brie"
       AgedBrieItem
     when "Sulfuras, Hand of Ragnaros"
-      Sulfuras
+      Item
     when "Backstage passes to a TAFKAL80ETC concert"
       BackstagePass
     end
