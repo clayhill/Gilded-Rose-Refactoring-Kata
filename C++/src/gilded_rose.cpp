@@ -13,69 +13,15 @@ void GildedRose::tick()
 {
     if (_name == "Normal Item") {
         normal_tick();
-        return;
     }
-
-    if (_name == "Aged Brie") {
+    else if (_name == "Aged Brie") {
         aged_brie_tick();
-        return;
     }
-
-    if (_name == "Sulfuras, Hand of Ragnaros") {
+    else if (_name == "Sulfuras, Hand of Ragnaros") {
         sulfuras_tick();
-        return;
     }
-
-    if (_name == "Backstage passes to a TAFKAL80ETC concert") {
+    else if (_name == "Backstage passes to a TAFKAL80ETC concert") {
         backstage_pass_tick();
-        return;
-    }
-
-    if (_name != "Aged Brie" && _name != "Backstage passes to a TAFKAL80ETC concert") {
-        if (_quality > 0) {
-            if (_name != "Sulfuras, Hand of Ragnaros") {
-                _quality = _quality - 1;
-            }
-        }
-    }
-    else {
-        if (_quality < 50) {
-            _quality = _quality + 1;
-            if (_name == "Backstage passes to a TAFKAL80ETC concert") {
-                if (_days_remaining < 11) {
-                    if (_quality < 50) {
-                        _quality = _quality + 1;
-                    }
-                }
-                if (_days_remaining < 6) {
-                    if (_quality < 50) {
-                        _quality = _quality + 1;
-                    }
-                }
-            }
-        }
-    }
-    if (_name != "Sulfuras, Hand of Ragnaros") {
-        _days_remaining = _days_remaining - 1;
-    }
-    if (_days_remaining < 0) {
-        if (_name != "Aged Brie") {
-            if (_name != "Backstage passes to a TAFKAL80ETC concert") {
-                if (_quality > 0) {
-                    if (_name != "Sulfuras, Hand of Ragnaros") {
-                        _quality = _quality - 1;
-                    }
-                }
-            }
-            else {
-                _quality = _quality - _quality;
-            }
-        }
-        else {
-            if (_quality < 50) {
-                _quality = _quality + 1;
-            }
-        }
     }
 }
 void GildedRose::normal_tick()
