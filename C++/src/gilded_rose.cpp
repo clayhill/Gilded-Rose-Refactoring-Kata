@@ -2,8 +2,6 @@
 
 #include <string>
 
-#include "normal_item.h"
-
 GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
     : _name(name)
     , _days_remaining(days_remaining)
@@ -38,6 +36,8 @@ void GildedRose::aged_brie_tick()
 }
 void GildedRose::sulfuras_tick()
 {
+    _sulfuras_item = std::make_unique<SulfurasItem>(_days_remaining, _quality);
+    _sulfuras_item->tick();
 }
 void GildedRose::backstage_pass_tick()
 {
@@ -73,6 +73,10 @@ int GildedRose::days_remaining() const
         return _aged_brie_item->days_remaining();
     }
 
+    if (_sulfuras_item) {
+        return _sulfuras_item->days_remaining();
+    }
+
     return _days_remaining;
 }
 
@@ -84,6 +88,10 @@ int GildedRose::quality() const
 
     if (_aged_brie_item) {
         return _aged_brie_item->quality();
+    }
+
+    if (_sulfuras_item) {
+        return _sulfuras_item->quality();
     }
 
     return _quality;
