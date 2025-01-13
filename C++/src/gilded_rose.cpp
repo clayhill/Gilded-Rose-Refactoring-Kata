@@ -33,17 +33,8 @@ void GildedRose::normal_tick()
 }
 void GildedRose::aged_brie_tick()
 {
-    _days_remaining--;
-
-    if (_quality == 50) {
-        return;
-    }
-
-    _quality++;
-
-    if (_days_remaining <= 0 && _quality < 50) {
-        _quality++;
-    }
+    _aged_brie_item = std::make_unique<AgedBrieItem>(_days_remaining, _quality);
+    _aged_brie_item->tick();
 }
 void GildedRose::sulfuras_tick()
 {
@@ -78,6 +69,10 @@ int GildedRose::days_remaining() const
         return _normal_item->days_remaining();
     }
 
+    if (_aged_brie_item) {
+        return _aged_brie_item->days_remaining();
+    }
+
     return _days_remaining;
 }
 
@@ -85,6 +80,10 @@ int GildedRose::quality() const
 {
     if (_normal_item) {
         return _normal_item->quality();
+    }
+
+    if (_aged_brie_item) {
+        return _aged_brie_item->quality();
     }
 
     return _quality;
