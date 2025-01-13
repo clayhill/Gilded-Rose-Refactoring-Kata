@@ -1,7 +1,10 @@
 #ifndef GILDEDROSE_GILDED_ROSE_H
 #define GILDEDROSE_GILDED_ROSE_H
 
+#include <memory>
 #include <string>
+
+#include "normal_item.h"
 
 class GildedRose
 {
@@ -12,10 +15,11 @@ public:
     void sulfuras_tick();
     void backstage_pass_tick();
     void tick();
-    int days_remaining();
-    int quality();
+    int days_remaining() const;
+    int quality() const;
 
 private:
+    std::unique_ptr<NormalItem> _normal_item;
     std::string _name;
     int _days_remaining;
     int _quality;

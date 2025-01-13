@@ -18,6 +18,8 @@ add_executable(testbench
     src/gilded_rose.h
     src/gilded_rose.cpp
     tests/gilded_rose_tests.cpp
+    src/normal_item.cpp
+    src/normal_item.h
 )
 
 target_include_directories(testbench PRIVATE src)
