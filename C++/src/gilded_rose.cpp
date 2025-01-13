@@ -69,7 +69,7 @@ void GildedRose::normal_tick()
         _quality--;
     }
 
-    if (_days_remaining == 0) {
+    if (_days_remaining <= 0) {
         _quality -= 2;
     }
 
