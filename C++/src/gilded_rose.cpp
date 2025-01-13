@@ -65,6 +65,8 @@ void GildedRose::tick()
 }
 void GildedRose::normal_tick()
 {
+    _quality--;
+    _days_remaining--;
 }
 
 int GildedRose::days_remaining()
