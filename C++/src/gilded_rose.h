@@ -7,14 +7,15 @@ class GildedRose
 {
 public:
     GildedRose(const std::string &name, int days_remaining, int quality);
+    void normal_tick();
     void tick();
     int days_remaining();
     int quality();
 
 private:
-  std::string _name;
-  int _days_remaining;
-  int _quality;
+    std::string _name;
+    int _days_remaining;
+    int _quality;
 };
 
-#endif //GILDEDROSE_GILDED_ROSE_H
+#endif  //GILDEDROSE_GILDED_ROSE_H

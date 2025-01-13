@@ -11,6 +11,11 @@ GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
 
 void GildedRose::tick()
 {
+    if (_name == "Normal Item") {
+        normal_tick();
+        return;
+    }
+
     if (_name != "Aged Brie" && _name != "Backstage passes to a TAFKAL80ETC concert") {
         if (_quality > 0) {
             if (_name != "Sulfuras, Hand of Ragnaros") {
@@ -57,6 +62,9 @@ void GildedRose::tick()
             }
         }
     }
+}
+void GildedRose::normal_tick()
+{
 }
 
 int GildedRose::days_remaining()
