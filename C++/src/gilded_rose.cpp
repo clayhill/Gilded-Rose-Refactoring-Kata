@@ -65,17 +65,17 @@ void GildedRose::tick()
 }
 void GildedRose::normal_tick()
 {
-    if (_quality > 0) {
-        if (_days_remaining > 0) {
-            _quality--;
-        }
+    _days_remaining--;
 
-        if (_days_remaining <= 0) {
-            _quality -= 2;
-        }
+    if (_quality == 0) {
+        return;
     }
 
-    _days_remaining--;
+    _quality--;
+
+    if (_days_remaining <= 0) {
+        _quality--;
+    }
 }
 
 int GildedRose::days_remaining()
