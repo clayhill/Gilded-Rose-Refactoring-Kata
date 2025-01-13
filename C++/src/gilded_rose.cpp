@@ -12,37 +12,21 @@ GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
 void GildedRose::tick()
 {
     if (_name == "Normal Item") {
-        normal_tick();
+        _normal_item = std::make_unique<NormalItem>(_days_remaining, _quality);
+        _normal_item->tick();
     }
     else if (_name == "Aged Brie") {
-        aged_brie_tick();
+        _aged_brie_item = std::make_unique<AgedBrieItem>(_days_remaining, _quality);
+        _aged_brie_item->tick();
     }
     else if (_name == "Sulfuras, Hand of Ragnaros") {
-        sulfuras_tick();
+        _sulfuras_item = std::make_unique<SulfurasItem>(_days_remaining, _quality);
+        _sulfuras_item->tick();
     }
     else if (_name == "Backstage passes to a TAFKAL80ETC concert") {
-        backstage_pass_tick();
+        _backstage_pass_item = std::make_unique<BackstagePass>(_days_remaining, _quality);
+        _backstage_pass_item->tick();
     }
-}
-void GildedRose::normal_tick()
-{
-    _normal_item = std::make_unique<NormalItem>(_days_remaining, _quality);
-    _normal_item->tick();
-}
-void GildedRose::aged_brie_tick()
-{
-    _aged_brie_item = std::make_unique<AgedBrieItem>(_days_remaining, _quality);
-    _aged_brie_item->tick();
-}
-void GildedRose::sulfuras_tick()
-{
-    _sulfuras_item = std::make_unique<SulfurasItem>(_days_remaining, _quality);
-    _sulfuras_item->tick();
-}
-void GildedRose::backstage_pass_tick()
-{
-    _backstage_pass_item = std::make_unique<BackstagePass>(_days_remaining, _quality);
-    _backstage_pass_item->tick();
 }
 
 int GildedRose::days_remaining() const
