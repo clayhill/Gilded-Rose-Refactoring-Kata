@@ -41,26 +41,8 @@ void GildedRose::sulfuras_tick()
 }
 void GildedRose::backstage_pass_tick()
 {
-    _days_remaining--;
-
-    if (_quality == 50) {
-        return;
-    }
-
-    if (_days_remaining < 0) {
-        _quality = 0;
-        return;
-    }
-
-    _quality++;
-
-    if (_days_remaining < 10) {
-        _quality++;
-    }
-
-    if (_days_remaining < 5) {
-        _quality++;
-    }
+    _backstage_pass_item = std::make_unique<BackstagePass>(_days_remaining, _quality);
+    _backstage_pass_item->tick();
 }
 
 int GildedRose::days_remaining() const
@@ -75,6 +57,10 @@ int GildedRose::days_remaining() const
 
     if (_sulfuras_item) {
         return _sulfuras_item->days_remaining();
+    }
+
+    if (_backstage_pass_item) {
+        return _backstage_pass_item->days_remaining();
     }
 
     return _days_remaining;
@@ -92,6 +78,10 @@ int GildedRose::quality() const
 
     if (_sulfuras_item) {
         return _sulfuras_item->quality();
+    }
+
+    if (_backstage_pass_item) {
+        return _backstage_pass_item->quality();
     }
 
     return _quality;

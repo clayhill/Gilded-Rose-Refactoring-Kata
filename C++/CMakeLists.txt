@@ -24,6 +24,8 @@ add_executable(testbench
     src/aged_brie_item.h
     src/sulfuras_item.cpp
     src/sulfuras_item.h
+    src/backstage_pass.cpp
+    src/backstage_pass.h
 )
 
 target_include_directories(testbench PRIVATE src)

@@ -5,6 +5,7 @@
 #include <string>
 
 #include "aged_brie_item.h"
+#include "backstage_pass.h"
 #include "normal_item.h"
 #include "sulfuras_item.h"
 
@@ -24,6 +25,7 @@ private:
     std::unique_ptr<NormalItem> _normal_item;
     std::unique_ptr<AgedBrieItem> _aged_brie_item;
     std::unique_ptr<SulfurasItem> _sulfuras_item;
+    std::unique_ptr<BackstagePass> _backstage_pass_item;
     std::string _name;
     int _days_remaining;
     int _quality;
