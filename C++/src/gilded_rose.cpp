@@ -26,6 +26,11 @@ void GildedRose::tick()
         return;
     }
 
+    if (_name == "Backstage passes to a TAFKAL80ETC concert") {
+        backstage_pass_tick();
+        return;
+    }
+
     if (_name != "Aged Brie" && _name != "Backstage passes to a TAFKAL80ETC concert") {
         if (_quality > 0) {
             if (_name != "Sulfuras, Hand of Ragnaros") {
@@ -103,6 +108,29 @@ void GildedRose::aged_brie_tick()
 }
 void GildedRose::sulfuras_tick()
 {
+}
+void GildedRose::backstage_pass_tick()
+{
+    _days_remaining--;
+
+    if (_quality == 50) {
+        return;
+    }
+
+    if (_days_remaining < 0) {
+        _quality = 0;
+        return;
+    }
+
+    _quality++;
+
+    if (_days_remaining < 10) {
+        _quality++;
+    }
+
+    if (_days_remaining < 5) {
+        _quality++;
+    }
 }
 
 int GildedRose::days_remaining()

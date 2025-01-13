@@ -10,6 +10,7 @@ public:
     void normal_tick();
     void aged_brie_tick();
     void sulfuras_tick();
+    void backstage_pass_tick();
     void tick();
     int days_remaining();
     int quality();
