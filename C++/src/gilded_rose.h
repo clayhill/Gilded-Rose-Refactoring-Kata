@@ -8,6 +8,7 @@ class GildedRose
 public:
     GildedRose(const std::string &name, int days_remaining, int quality);
     void normal_tick();
+    void aged_brie_tick();
     void tick();
     int days_remaining();
     int quality();

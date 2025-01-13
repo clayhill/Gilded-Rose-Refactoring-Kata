@@ -16,6 +16,11 @@ void GildedRose::tick()
         return;
     }
 
+    if (_name == "Aged Brie") {
+        aged_brie_tick();
+        return;
+    }
+
     if (_name != "Aged Brie" && _name != "Backstage passes to a TAFKAL80ETC concert") {
         if (_quality > 0) {
             if (_name != "Sulfuras, Hand of Ragnaros") {
@@ -75,6 +80,20 @@ void GildedRose::normal_tick()
 
     if (_days_remaining <= 0) {
         _quality--;
+    }
+}
+void GildedRose::aged_brie_tick()
+{
+    _days_remaining--;
+
+    if (_quality == 50) {
+        return;
+    }
+
+    _quality++;
+
+    if (_days_remaining <= 0 && _quality < 50) {
+        _quality++;
     }
 }
 
