@@ -20,8 +20,8 @@ void GildedRose::tick()
         _item->tick();
     }
     else if (_name == "Sulfuras, Hand of Ragnaros") {
-        _sulfuras_item = std::make_unique<SulfurasItem>(_days_remaining, _quality);
-        _sulfuras_item->tick();
+        _item = std::make_unique<SulfurasItem>(_days_remaining, _quality);
+        _item->tick();
     }
     else if (_name == "Backstage passes to a TAFKAL80ETC concert") {
         _backstage_pass_item = std::make_unique<BackstagePass>(_days_remaining, _quality);
@@ -35,10 +35,6 @@ int GildedRose::days_remaining() const
         return _item->days_remaining();
     }
 
-    if (_sulfuras_item) {
-        return _sulfuras_item->days_remaining();
-    }
-
     if (_backstage_pass_item) {
         return _backstage_pass_item->days_remaining();
     }
@@ -50,10 +46,6 @@ int GildedRose::quality() const
 {
     if (_item) {
         return _item->quality();
-    }
-
-    if (_sulfuras_item) {
-        return _sulfuras_item->quality();
     }
 
     if (_backstage_pass_item) {
