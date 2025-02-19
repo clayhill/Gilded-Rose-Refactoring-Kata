@@ -26,6 +26,8 @@ add_executable(testbench
     src/sulfuras_item.h
     src/backstage_pass.cpp
     src/backstage_pass.h
+    src/item.cpp
+    src/item.h
 )
 
 target_include_directories(testbench PRIVATE src)

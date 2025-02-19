@@ -18,7 +18,7 @@ public:
     int quality() const;
 
 private:
-    std::unique_ptr<NormalItem> _normal_item;
+    std::unique_ptr<Item> _item;
     std::unique_ptr<AgedBrieItem> _aged_brie_item;
     std::unique_ptr<SulfurasItem> _sulfuras_item;
     std::unique_ptr<BackstagePass> _backstage_pass_item;

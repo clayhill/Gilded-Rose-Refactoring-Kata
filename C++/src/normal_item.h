@@ -1,17 +1,13 @@
 #ifndef NORMAL_ITEM_H
 #define NORMAL_ITEM_H
 
-class NormalItem
+#include "item.h"
+
+class NormalItem : public Item
 {
 public:
     NormalItem(int days_remaining, int quality);
-    void tick();
-    [[nodiscard]] int days_remaining() const { return _days_remaining; }
-    [[nodiscard]] int quality() const { return _quality; }
-
-private:
-    int _days_remaining{};
-    int _quality{};
+    void tick() override;
 };
 
 #endif  //NORMAL_ITEM_H

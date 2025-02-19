@@ -12,8 +12,8 @@ GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
 void GildedRose::tick()
 {
     if (_name == "Normal Item") {
-        _normal_item = std::make_unique<NormalItem>(_days_remaining, _quality);
-        _normal_item->tick();
+        _item = std::make_unique<NormalItem>(_days_remaining, _quality);
+        _item->tick();
     }
     else if (_name == "Aged Brie") {
         _aged_brie_item = std::make_unique<AgedBrieItem>(_days_remaining, _quality);
@@ -31,8 +31,8 @@ void GildedRose::tick()
 
 int GildedRose::days_remaining() const
 {
-    if (_normal_item) {
-        return _normal_item->days_remaining();
+    if (_item) {
+        return _item->days_remaining();
     }
 
     if (_aged_brie_item) {
@@ -52,8 +52,8 @@ int GildedRose::days_remaining() const
 
 int GildedRose::quality() const
 {
-    if (_normal_item) {
-        return _normal_item->quality();
+    if (_item) {
+        return _item->quality();
     }
 
     if (_aged_brie_item) {
