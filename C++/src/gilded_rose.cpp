@@ -16,8 +16,8 @@ void GildedRose::tick()
         _item->tick();
     }
     else if (_name == "Aged Brie") {
-        _aged_brie_item = std::make_unique<AgedBrieItem>(_days_remaining, _quality);
-        _aged_brie_item->tick();
+        _item = std::make_unique<AgedBrieItem>(_days_remaining, _quality);
+        _item->tick();
     }
     else if (_name == "Sulfuras, Hand of Ragnaros") {
         _sulfuras_item = std::make_unique<SulfurasItem>(_days_remaining, _quality);
@@ -35,10 +35,6 @@ int GildedRose::days_remaining() const
         return _item->days_remaining();
     }
 
-    if (_aged_brie_item) {
-        return _aged_brie_item->days_remaining();
-    }
-
     if (_sulfuras_item) {
         return _sulfuras_item->days_remaining();
     }
@@ -54,10 +50,6 @@ int GildedRose::quality() const
 {
     if (_item) {
         return _item->quality();
-    }
-
-    if (_aged_brie_item) {
-        return _aged_brie_item->quality();
     }
 
     if (_sulfuras_item) {
