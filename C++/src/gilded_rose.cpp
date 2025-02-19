@@ -24,8 +24,8 @@ void GildedRose::tick()
         _item->tick();
     }
     else if (_name == "Backstage passes to a TAFKAL80ETC concert") {
-        _backstage_pass_item = std::make_unique<BackstagePass>(_days_remaining, _quality);
-        _backstage_pass_item->tick();
+        _item = std::make_unique<BackstagePass>(_days_remaining, _quality);
+        _item->tick();
     }
 }
 
@@ -35,10 +35,6 @@ int GildedRose::days_remaining() const
         return _item->days_remaining();
     }
 
-    if (_backstage_pass_item) {
-        return _backstage_pass_item->days_remaining();
-    }
-
     return _days_remaining;
 }
 
@@ -46,10 +42,6 @@ int GildedRose::quality() const
 {
     if (_item) {
         return _item->quality();
-    }
-
-    if (_backstage_pass_item) {
-        return _backstage_pass_item->quality();
     }
 
     return _quality;
