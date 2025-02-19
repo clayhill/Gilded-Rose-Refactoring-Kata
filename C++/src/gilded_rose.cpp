@@ -2,47 +2,44 @@
 
 #include <string>
 
+namespace
+{
+std::unique_ptr<Item> createItem(const std::string &name, int days_remaining, int quality)
+{
+    if (name == "Normal Item") {
+        return std::make_unique<NormalItem>(days_remaining, quality);
+    }
+
+    if (name == "Aged Brie") {
+        return std::make_unique<AgedBrieItem>(days_remaining, quality);
+    }
+
+    if (name == "Sulfuras, Hand of Ragnaros") {
+        return std::make_unique<SulfurasItem>(days_remaining, quality);
+    }
+
+    if (name == "Backstage passes to a TAFKAL80ETC concert") {
+        return std::make_unique<BackstagePass>(days_remaining, quality);
+    }
+}
+}  // namespace
+
 GildedRose::GildedRose(const std::string &name, int days_remaining, int quality)
-    : _name(name)
-    , _days_remaining(days_remaining)
-    , _quality(quality)
+    : _item(createItem(name, days_remaining, quality))
 {
 }
 
 void GildedRose::tick()
 {
-    if (_name == "Normal Item") {
-        _item = std::make_unique<NormalItem>(_days_remaining, _quality);
-        _item->tick();
-    }
-    else if (_name == "Aged Brie") {
-        _item = std::make_unique<AgedBrieItem>(_days_remaining, _quality);
-        _item->tick();
-    }
-    else if (_name == "Sulfuras, Hand of Ragnaros") {
-        _item = std::make_unique<SulfurasItem>(_days_remaining, _quality);
-        _item->tick();
-    }
-    else if (_name == "Backstage passes to a TAFKAL80ETC concert") {
-        _item = std::make_unique<BackstagePass>(_days_remaining, _quality);
-        _item->tick();
-    }
+    _item->tick();
 }
 
 int GildedRose::days_remaining() const
 {
-    if (_item) {
-        return _item->days_remaining();
-    }
-
-    return _days_remaining;
+    return _item->days_remaining();
 }
 
 int GildedRose::quality() const
 {
-    if (_item) {
-        return _item->quality();
-    }
-
-    return _quality;
+    return _item->quality();
 }
